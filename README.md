@@ -1,6 +1,11 @@
 # One doubleheader, two venues, opposite settlements
 
-On Sep 24, 2026 the Saturday Sep 26 Orioles–Yankees game was moved to Friday Sep 25, making a doubleheader. Kalshi and Polymarket US each had a "Sep 25" contract and a "Sep 26" contract on the series. They settled the same contracts on opposite games.
+**TLDR**
+
+- Kalshi and Polymarket US each listed a contract on the Sep 25 Orioles–Yankees game and one on the Sep 26 game, naming the same dates and times.
+- The Sep 26 game was rescheduled to Sep 25 as part of a doubleheader. A Yankees press release says it became the first game; MLB's Stats API labels the second game as the Sep 26 makeup.
+- Each venue mapped its "Sep 26" contract to a different game of the doubleheader: Kalshi to game 1, Polymarket US to game 2. Each mapping matches one of the two records.
+- The contract text never changed on either venue, but the two "Sep 26" contracts paid out on different winners.
 
 | | Kalshi "Sep 26" (`KXMLBGAME-26SEP261915BALNYY`) | Polymarket US "Sep 26" (`aec-mlb-bal-nyy-2026-09-26`) |
 |---|---|---|
@@ -30,22 +35,18 @@ Kalshi's contract terms, `BASEBALLGAMEWIN`:
 
 > Outcome sourced from MLB.
 
-Kalshi's "Sep 26" settlement matches the press release, and Polymarket US's matches the Stats API. That match is all this shows. I don't know which source either venue actually settled from — one of these two records, or something else entirely — and neither venue's API response says.
+Kalshi's "Sep 26" settlement matches the press release, and Polymarket US's matches the Stats API. That is as far as the evidence goes. Neither venue says exactly which record it settled from, and nothing in either API response shows its reasoning. What the match does show is that each settlement can be squared with a record published on MLB.com, and MLB is the source both venues name.
 
 ## The point
 
-When they were listed, both "Sep 26" contracts pointed at the same game: Orioles at Yankees, Sep 26, 7:15pm ET. Then that game was moved into a Sep 25 doubleheader, and the Yankees' announcement and MLB's Stats API disagree about which of the two games it became. Both contracts' rules text reads today exactly as it did when the bot first saw them, but they settled on different games: Kalshi's on game 1, Polymarket US's on game 2. (Kalshi's event now carries a "(Game 1)" title and notice; Polymarket US's `gameStartTime` now reads `2026-09-25T23:30:00Z`. Neither API shows when those changed.)
+When they were listed, both "Sep 26" contracts named the same game: Orioles at Yankees, Sep 26, 7:15pm ET. Then:
 
-Each venue's settlement lines up with one of those two records, so neither is plainly wrong, and they still paid out on different games. Two contracts can say the same thing, name the same authority, and still not be the same bet.
+- The game was moved into a Sep 25 doubleheader, and the Yankees' announcement and MLB's Stats API disagree about which of the two games it became.
+- Neither venue changed its rules text. Both contracts read today exactly as they did when the bot first saw them.
+- Other fields did change. Kalshi's event now carries a "(Game 1)" title and a notice; Polymarket US's `gameStartTime` now reads `2026-09-25T23:30:00Z`. Neither API shows when. The bot last saw Polymarket US's `gameStartTime` still reading Sep 26 at 02:27Z Sep 26, about a minute before the market's `endDate`.
+- The two contracts settled on different games: Kalshi's on game 1, Polymarket US's on game 2.
 
-How the two "Sep 26" contracts identify their game:
-
-| | Kalshi | Polymarket US |
-|---|---|---|
-| ID | `KXMLBGAME-26SEP261915BALNYY`: `26SEP26` = 2026-09-26, `1915` = 7:15pm, BAL, NYY | `aec-mlb-bal-nyy-2026-09-26`: BAL, NYY, 2026-09-26 (no time) |
-| Rules text | "Baltimore vs New York Y professional baseball game originally scheduled for Sep 26, 2026 at 7:15 PM EDT" | "Baltimore Orioles vs New York Yankees MLB game scheduled for 2026-09-26 at 7:15PM ET" |
-| Other field | — | `question`: "scheduled for September 26, 2026 at 11:15 PM UTC" (= 7:15pm EDT) |
-| Away/home | — | `marketSides`: Orioles `away`, Yankees `home` |
+Each venue's settlement lines up with one of the two records, so neither is plainly wrong. But two contracts that name the same game by date, time and teams were not the same bet.
 
 ## How this showed up
 
