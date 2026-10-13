@@ -22,8 +22,8 @@ check("description" not in g1, "MLB Stats API: game 1 carries no makeup label")
 check(g1["teams"]["away"]["score"] == 10 and g1["teams"]["home"]["score"] == 2, "MLB: game 1 Orioles 10, Yankees 2")
 check(g2["teams"]["away"]["score"] == 3 and g2["teams"]["home"]["score"] == 6, "MLB: game 2 Orioles 3, Yankees 6")
 pr = open(os.path.join(D, "press_release.html"), encoding="utf-8", errors="replace").read()
-check("The game will be made up" in pr and "Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m." in pr,
-      "MLB press release: 'The game will be made up ... Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m.'")
+check("The New York Yankees have announced that Saturday" in pr and "The game will be made up" in pr and "Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m." in pr,
+      "Yankees press release on MLB.com: 'The New York Yankees have announced ... The game will be made up ... Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m.'")
 
 # --- Kalshi: settled per the press release, and said so ---
 sat = J("event_KXMLBGAME-26SEP261915BALNYY.json")["event"]; fri = J("event_KXMLBGAME-26SEP251905BALNYY.json")["event"]
@@ -67,6 +67,8 @@ check(all('"date": "2026-09-26"' in r["match_key"] for r in pairs if "26SEP26" i
 seen = {r["market"]: r for r in csv.DictReader(B("markets_as_bot_saw_them.csv"))}
 check(seen["aec-mlb-bal-nyy-2026-09-26"]["start_time_value"] == "2026-09-26T23:15:00Z" and seen["aec-mlb-bal-nyy-2026-09-26"]["last_seen_utc"].startswith("2026-09-26 02:27"),
       "bot: last saw PMUS 'Sep 26' gameStartTime = 2026-09-26T23:15Z at 02:27Z Sep 26 (now 2026-09-25T23:30Z)")
+check(seen["aec-mlb-bal-nyy-2026-09-26"]["rules_text"] == p26["description"] and seen["KXMLBGAME-26SEP261915BALNYY-BAL"]["rules_text"].startswith(satm["KXMLBGAME-26SEP261915BALNYY-BAL"]["rules_primary"]),
+      "bot: both 'Sep 26' rules texts as first stored by the bot are identical to what the venues serve today")
 trades = list(csv.DictReader(B("six_trades.csv")))
 check(len(trades) == 6 and all(r["kalshi_payout"] == "0" and r["pm_payout"] == "0" for r in trades), "bot: six two-leg trades, every leg paid 0")
 check(abs(sum(float(r["realized_pnl_usd"]) for r in trades) + 55.5977) < 1e-6, "bot: realized -55.5977")

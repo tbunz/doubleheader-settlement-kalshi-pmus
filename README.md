@@ -5,13 +5,13 @@ On Sep 24, 2026 the Saturday Sep 26 Orioles–Yankees game was moved to Friday S
 | | Kalshi "Sep 26" (`KXMLBGAME-26SEP261915BALNYY`) | Polymarket US "Sep 26" (`aec-mlb-bal-nyy-2026-09-26`) |
 |---|---|---|
 | Contract text | "originally scheduled for Sep 26, 2026 at 7:15 PM EDT" | "scheduled for 2026-09-26 at 7:15PM ET … Outcome sourced from MLB." |
-| Settled on | **game 1** (first pitch 4:08pm, Orioles 10–2); settled 22:57Z Sep 25 | **game 2** (first pitch 7:31pm, Yankees 6–3); market `endDate` 02:28Z Sep 26 |
+| Settled on | **game 1** (scheduled 4:05pm, Orioles 10–2); settled 22:57Z Sep 25 | **game 2** (the second game, Yankees 6–3); market `endDate` 02:28Z Sep 26 |
 
-## Two MLB records, two answers
+## Two records, two answers
 
-MLB's records disagree on which game of the doubleheader was the Sep 26 makeup:
+A Yankees press release on MLB.com and MLB's own Stats API disagree on which game of the doubleheader was the Sep 26 makeup:
 
-- **MLB.com press release** (published Sep 24): "The game will be made up tomorrow, Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m."
+- **Yankees press release on MLB.com** (published Sep 24): "The New York Yankees have announced that Saturday's Yankees-Orioles game (Saturday, September 26) will not be played … The game will be made up tomorrow, Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m."
 - **MLB Stats API** (schedule endpoint, fetched Oct 13): game 2 (`gamePk` 823489) carries `"description": "Makeup of 9/26 PPD"`. Game 1 (`gamePk` 823491) has no makeup label.
 
 What each venue names as its resolution source, verbatim:
@@ -34,9 +34,9 @@ Kalshi's "Sep 26" settlement matches the press release, and Polymarket US's matc
 
 ## The point
 
-When they were listed, both "Sep 26" contracts pointed at the same game: Orioles at Yankees, Sep 26, 7:15pm ET. Then that game was moved into a Sep 25 doubleheader, and MLB's own records disagree about which of the two games it became. Neither venue changed the contract's rules text, but they settled on different games: Kalshi's on game 1, Polymarket US's on game 2. (Kalshi's event now carries a "(Game 1)" title and notice; Polymarket US's `gameStartTime` now reads `2026-09-25T23:30:00Z`. Neither API shows when those changed.)
+When they were listed, both "Sep 26" contracts pointed at the same game: Orioles at Yankees, Sep 26, 7:15pm ET. Then that game was moved into a Sep 25 doubleheader, and the Yankees' announcement and MLB's Stats API disagree about which of the two games it became. Both contracts' rules text reads today exactly as it did when the bot first saw them, but they settled on different games: Kalshi's on game 1, Polymarket US's on game 2. (Kalshi's event now carries a "(Game 1)" title and notice; Polymarket US's `gameStartTime` now reads `2026-09-25T23:30:00Z`. Neither API shows when those changed.)
 
-Each venue's settlement lines up with an official MLB record, so neither is plainly wrong, and they still paid out on different games. Two contracts can say the same thing, name the same authority, and still not be the same bet.
+Each venue's settlement lines up with one of those two records, so neither is plainly wrong, and they still paid out on different games. Two contracts can say the same thing, name the same authority, and still not be the same bet.
 
 How the two "Sep 26" contracts identify their game:
 
@@ -62,7 +62,7 @@ I was running a cross-venue arbitrage experiment that paired these contracts by 
 | `event_KXMLBGAME-26SEP261915BALNYY.json`, `…26SEP251905….json` | Kalshi event objects: title, notice, settlement sources, and both markets with rules text, result, settlement time |
 | `market_aec-mlb-bal-nyy-2026-09-2[56].json`, `settlement_….json` | Polymarket US market objects (description, question, gameStartTime, endDate) and settlement values |
 | `schedule_nyy_sep24-27.json` | MLB Stats API: both games with scores, linescores, game numbers, the "Makeup of 9/26 PPD" label |
-| `press_release.html` | MLB.com's Sep 24 press release |
+| `press_release.html` | the Yankees' Sep 24 press release, as published on MLB.com |
 | `kalshi_BASEBALLGAMEWIN_terms.pdf` | Kalshi's contract terms for this market type |
 
 `bot/`:
