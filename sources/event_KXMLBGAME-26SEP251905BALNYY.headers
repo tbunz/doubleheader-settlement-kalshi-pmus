@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Date: Tue, 13 Oct 2026 18:17:08 GMT
+x-content-type-options: nosniff
+content-security-policy: default-src 'none';
+strict-transport-security: max-age=31536000; includeSubDomains
+Vary: Accept-Encoding
+X-Cache: Miss from cloudfront
+Via: 1.1 063b2fda5145763d6b033a28a2621b88.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: DEN53-P6
+X-Amz-Cf-Id: DapjlMNBA4ERNWDxjySyNm06sSNlSA96Nck_WMgR-femyUMeZ-RYGg==
+

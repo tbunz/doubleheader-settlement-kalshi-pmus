@@ -1,0 +1,7 @@
+Transitions between consecutive rules versions of Polymarket US '…bal-nyy-2026-09-26…' markets (280 markets, 644 versions).
+Columns: text before -> text after, hour (UTC) the new text was first seen by the bot, number of markets.
+
+  88          2026-09-25 4:05PM ET  ->  2026-09-25 7:05PM ET          first seen 2026-09-25 15:xx UTC
+ 138          2026-09-25 7:05PM ET  ->  2026-09-26 7:15PM ET          first seen 2026-09-25 21:xx UTC
+ 101          2026-09-25 4:05PM ET  ->  2026-09-26 7:15PM ET          first seen 2026-09-25 21:xx UTC
+  37    2026-09-25 (no time given)  ->  2026-09-26 7:15PM ET          first seen 2026-09-25 21:xx UTC

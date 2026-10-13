@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 298303
+content-security-policy: 
+x-dns-prefetch-control: off
+expect-ct: max-age=0
+x-frame-options: SAMEORIGIN
+x-download-options: noopen
+x-permitted-cross-domain-policies: none
+cache-control: public, max-age=900
+content-type: text/html; charset=utf-8
+Via: 1.1 google, 1.1 varnish, 1.1 varnish
+Accept-Ranges: bytes
+Age: 0
+Date: Tue, 13 Oct 2026 18:39:07 GMT
+X-Served-By: cache-chi-klot8100176-CHI, cache-den-kden1300032-DEN
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+referrer-policy: no-referrer-when-downgrade
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+Strict-Transport-Security: max-age=604800
+

@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 16681
+X-Request-Id: e5a9c4a2-d634-4390-b5b6-78b89f4e7e77
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers: Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization
+Access-Control-Expose-Headers: Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization
+Access-Control-Allow-Credentials: true
+Cache-Control: max-age=20, public, stale-while-revalidate=30, stale-if-error=86400
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+X-Frame-Options: DENY
+Content-Type: application/json;charset=UTF-8
+Via: 1.1 google, 1.1 varnish, 1.1 varnish
+Accept-Ranges: bytes
+Age: 0
+Date: Tue, 13 Oct 2026 18:39:00 GMT
+X-Served-By: cache-chi-klot8100076-CHI, cache-sjc1000086-SJC
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1791916741.759151,VS0,VE118
+Vary: accept-encoding, Accept-Encoding
+

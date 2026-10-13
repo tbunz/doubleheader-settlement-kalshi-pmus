@@ -1,0 +1,2 @@
+# Store every file byte-for-byte: sources/ is hashed in SHA256SUMS, and HTTP headers are CRLF.
+* -text
