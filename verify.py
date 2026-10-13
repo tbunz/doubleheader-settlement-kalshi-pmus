@@ -4,7 +4,9 @@ Usage: python3 verify.py [sources_dir]
 """
 import csv, json, os, re, subprocess, sys
 
-D = sys.argv[1] if len(sys.argv) > 1 else "sources"
+HERE = os.path.dirname(os.path.abspath(__file__))
+D = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "sources")
+def B(name): return open(os.path.join(HERE, "bot", name))
 ok = True
 def check(cond, msg):
     global ok
@@ -59,13 +61,13 @@ except (FileNotFoundError, subprocess.CalledProcessError):
     print("SKIP Kalshi terms PDF checks (pdftotext not installed)")
 
 # --- bot files: the pairing and the loss ---
-pairs = list(csv.DictReader(open("bot/pairs.csv")))
+pairs = list(csv.DictReader(B("pairs.csv")))
 check(all('"date": "2026-09-26"' in r["match_key"] for r in pairs if "26SEP26" in r["kalshi_market_id"]) and all("2026-09-26" in r["pm_market_id"] for r in pairs if "26SEP26" in r["kalshi_market_id"]),
       "bot: paired Kalshi 'Sep 26' with Polymarket 'Sep 26' by {date, away, home}")
-seen = {r["market"]: r for r in csv.DictReader(open("bot/markets_as_bot_saw_them.csv"))}
+seen = {r["market"]: r for r in csv.DictReader(B("markets_as_bot_saw_them.csv"))}
 check(seen["aec-mlb-bal-nyy-2026-09-26"]["start_time_value"] == "2026-09-26T23:15:00Z" and seen["aec-mlb-bal-nyy-2026-09-26"]["last_seen_utc"].startswith("2026-09-26 02:27"),
       "bot: last saw PMUS 'Sep 26' gameStartTime = 2026-09-26T23:15Z at 02:27Z Sep 26 (now 2026-09-25T23:30Z)")
-trades = list(csv.DictReader(open("bot/six_trades.csv")))
+trades = list(csv.DictReader(B("six_trades.csv")))
 check(len(trades) == 6 and all(r["kalshi_payout"] == "0" and r["pm_payout"] == "0" for r in trades), "bot: six two-leg trades, every leg paid 0")
 check(abs(sum(float(r["realized_pnl_usd"]) for r in trades) + 55.5977) < 1e-6, "bot: realized -55.5977")
 
