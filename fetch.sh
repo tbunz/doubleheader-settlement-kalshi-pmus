@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 # Re-fetches every public source in sources/ from its origin. No API keys. ~8 requests.
 # Usage: ./fetch.sh [outdir]   (default: sources_fresh/)
+# Every URL is tried; failures are printed as "FAIL <url> <http status>" and the script exits 1 at the end if any failed.
 set -euo pipefail
 OUT="${1:-sources_fresh}"; mkdir -p "$OUT"
-get () { echo "GET $2"; curl -sS -L -D "$OUT/$1.headers" -o "$OUT/$1" -A "Mozilla/5.0" "$2"; }
+failed=0
+get () {
+  echo "GET $2"
+  local status
+  status=$(curl -sS -L --fail-with-body -D "$OUT/${1%.*}.headers" -o "$OUT/$1" -A "Mozilla/5.0" -w '%{http_code}' "$2") \
+    || { echo "FAIL $2 ${status:-000}"; failed=1; }
+}
 
 K="https://api.elections.kalshi.com/trade-api/v2"
 get event_KXMLBGAME-26SEP261915BALNYY.json "$K/events/KXMLBGAME-26SEP261915BALNYY?with_nested_markets=true"
@@ -19,5 +26,12 @@ get schedule_nyy_sep24-27.json "https://statsapi.mlb.com/api/v1/schedule?sportId
 get press_release.html "https://www.mlb.com/press-release/saturday-s-yankees-orioles-game-saturday-september-26-rescheduled-due-to-the-forecast-of-sustained-inclement-weather"
 get kalshi_BASEBALLGAMEWIN_terms.pdf "https://assets.kalshi.com/contract_terms/BASEBALLGAMEWIN.pdf"
 
-( cd "$OUT" && sha256sum * > ../SHA256SUMS.fresh )
-echo; echo "Fetched to $OUT/. Now: python3 verify.py $OUT"
+# Bare filenames, two-space separator, same format as SHA256SUMS; written to the directory this script was run from.
+( cd "$OUT" && sha256sum * ) | sed 's/^\([0-9a-f]\{64\}\) \*/\1  /' > SHA256SUMS.fresh
+
+echo
+if [ "$failed" -ne 0 ]; then
+  echo "Some requests failed (see FAIL lines above). Files in $OUT/ may be incomplete."
+  exit 1
+fi
+echo "Fetched to $OUT/. Now: python3 verify.py $OUT"
