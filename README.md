@@ -4,7 +4,7 @@
 
 - Kalshi and Polymarket US each listed a contract on the Sep 25 Orioles–Yankees game and one on the Sep 26 game, naming the same dates and times.
 - The Sep 26 game was rescheduled to Sep 25 as part of a doubleheader. A Yankees press release says it became the first game; MLB's Stats API labels the second game as the Sep 26 makeup.
-- Each venue mapped its "Sep 26" contract to a different game of the doubleheader: Kalshi to game 1, Polymarket US to game 2. Each mapping matches one of the two records.
+- Each venue mapped its "Sep 26" contract to a different game of the doubleheader: Kalshi to game 1, Polymarket US to game 2.
 - The contract text never changed on either venue, but the two "Sep 26" contracts paid out on different winners.
 
 | | Kalshi "Sep 26" (`KXMLBGAME-26SEP261915BALNYY`) | Polymarket US "Sep 26" (`aec-mlb-bal-nyy-2026-09-26`) |
