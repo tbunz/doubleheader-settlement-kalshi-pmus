@@ -9,8 +9,10 @@
 
 | | Kalshi "Sep 26" (`KXMLBGAME-26SEP261915BALNYY`) | Polymarket US "Sep 26" (`aec-mlb-bal-nyy-2026-09-26`) |
 |---|---|---|
-| Contract text | "originally scheduled for Sep 26, 2026 at 7:15 PM EDT" | "scheduled for 2026-09-26 at 7:15PM ET … Outcome sourced from MLB." |
+| Contract text | "originally scheduled for Sep 26, 2026 at 7:15 PM EDT"\* | "scheduled for 2026-09-26 at 7:15PM ET … Outcome sourced from MLB." |
 | Settled on | **game 1** (scheduled 4:05pm, Orioles 10–2); settled 22:57Z Sep 25 | **game 2** (the second game, Yankees 6–3); market `endDate` 02:28Z Sep 26 |
+
+\* "Originally" is Kalshi's standard wording for every game market, not an edit made after the move. The Sep 25 contract, which was never rescheduled, reads "originally scheduled for Sep 25, 2026 at 7:05 PM EDT", and the bot stored the Sep 26 text on Sep 23, a day before the reschedule was announced.
 
 ## Two records, two answers
 

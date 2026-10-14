@@ -102,6 +102,8 @@ check("bot: last saw PMUS 'Sep 26' gameStartTime = 2026-09-26T23:15Z at 02:27Z S
       lambda: seen("aec-mlb-bal-nyy-2026-09-26")["start_time_value"] == "2026-09-26T23:15:00Z" and seen("aec-mlb-bal-nyy-2026-09-26")["last_seen_utc"].startswith("2026-09-26 02:27"))
 check("bot: both 'Sep 26' rules texts as first stored by the bot are identical to what the venues serve today",
       lambda: seen("aec-mlb-bal-nyy-2026-09-26")["rules_text"] == p26()["description"] and seen("KXMLBGAME-26SEP261915BALNYY-BAL")["rules_text"].startswith(satm("KXMLBGAME-26SEP261915BALNYY-BAL")["rules_primary"]))
+check("bot: Kalshi 'Sep 26' rules text (with 'originally') stored 2026-09-23, before the Sep 24 press release",
+      lambda: seen("KXMLBGAME-26SEP261915BALNYY-BAL")["rules_text_seen_at"].startswith("2026-09-23") and '"datePublished":"2026-09-24' in pr())
 check("bot: six two-leg trades, every leg paid 0", lambda: len(B("six_trades.csv")) == 6 and all(r["kalshi_payout"] == "0" and r["pm_payout"] == "0" for r in B("six_trades.csv")))
 check("bot: realized -55.5977", lambda: abs(sum(float(r["realized_pnl_usd"]) for r in B("six_trades.csv")) + 55.5977) < 1e-6)
 
