@@ -5,7 +5,7 @@
 - Kalshi and Polymarket US each listed a contract on the Orioles–Yankees game scheduled for Sep 26, 2026 at 7:15pm ET. When they were listed, both named the same game.
 - The game was rescheduled and moved into a Sep 25 doubleheader. MLB.com carried two records that disagree on which game of the doubleheader it became: a Yankees press release says game 1, and MLB's Stats API labels game 2 as the Sep 26 makeup.
 - Kalshi settled its contract on game 1 (Orioles won). Polymarket US settled on game 2 (Yankees won).
-- Each settlement matches a record published on MLB.com, a source both venues name, so each is defensible. Even a contract on a single baseball game can be hard to resolve once the game moves.
+- Each settlement matches a record published on MLB.com, a source both venues name, so each is defensible.
 
 | | Kalshi (`KXMLBGAME-26SEP261915BALNYY`) | Polymarket US (`aec-mlb-bal-nyy-2026-09-26`) |
 |---|---|---|
