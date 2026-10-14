@@ -12,11 +12,11 @@
 | Contract text | "originally scheduled for Sep 26, 2026 at 7:15 PM EDT"\* | "scheduled for 2026-09-26 at 7:15PM ET … Outcome sourced from MLB." |
 | Settled on | **game 1** (scheduled 4:05pm, Orioles 10–2); settled 22:57Z Sep 25 | **game 2** (the second game, Yankees 6–3); market `endDate` 02:28Z Sep 26 |
 
-\* "Originally" is Kalshi's standard wording for every game market, not an edit made after the move. The Sep 25 contract, which was never rescheduled, reads "originally scheduled for Sep 25, 2026 at 7:05 PM EDT", and the bot stored the Sep 26 text on Sep 23, a day before the reschedule was announced.
+\* "Originally" is Kalshi's standard wording for every game market, not an edit made after the move. The Sep 25 contract, which was never rescheduled, also reads "originally scheduled for Sep 25, 2026 at 7:05 PM EDT".
 
 ## Two records, two answers
 
-A Yankees press release on MLB.com and MLB's own Stats API disagree on which game of the doubleheader was the Sep 26 makeup:
+A Yankees press release on MLB.com and MLB's own Stats API *disagree* on which game of the doubleheader was the Sep 26 makeup:
 
 - **Yankees press release on MLB.com** (published Sep 24): "The New York Yankees have announced that Saturday's Yankees-Orioles game (Saturday, September 26) will not be played … The game will be made up tomorrow, Friday, September 25 as the first game of a single-admission doubleheader, which will begin at 4:05 p.m."
 - **MLB Stats API** (schedule endpoint, fetched Oct 13): game 2 (`gamePk` 823489) carries `"description": "Makeup of 9/26 PPD"`. Game 1 (`gamePk` 823491) has no makeup label.
@@ -37,7 +37,9 @@ Kalshi's contract terms, `BASEBALLGAMEWIN`:
 
 > Outcome sourced from MLB.
 
-Kalshi's "Sep 26" settlement matches the press release, and Polymarket US's matches the Stats API. That is as far as the evidence goes. Neither venue says exactly which record it settled from, and nothing in either API response shows its reasoning. What the match does show is that each settlement can be squared with a record published on MLB.com, and MLB is the source both venues name.
+Kalshi's "Sep 26" settlement matches the press release, and Polymarket US's matches the Stats API. I am *not* claiming that either venue resolved exactly to those sources. Neither venue says exactly which record it settled from, and nothing in either API response shows its reasoning. What the match does show is that each settlement can be squared with a record published on MLB.com, and MLB is the source both venues name.
+
+*Each venue made a defensible decision about how to re-map the rescheduled game.*
 
 ## The point
 
