@@ -1,5 +1,7 @@
 # Same contract, different games
 
+![Kalshi's and Polymarket US's Sep 26 contracts both named the Orioles @ Yankees game scheduled for Sat Sep 26 at 7:15 PM ET. The game moved up a day into the Sep 25 doubleheader; Kalshi settled on game 1 (Orioles 10–2) and Polymarket US on game 2 (Yankees 6–3).](diagram.png)
+
 **TLDR**
 
 - Kalshi and Polymarket US each listed a contract on the Orioles–Yankees game scheduled for Sep 26, 2026 at 7:15pm ET. When they were listed, both named the same game.
